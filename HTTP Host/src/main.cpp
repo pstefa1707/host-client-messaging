@@ -49,8 +49,8 @@ int main(int argc, char *argv[]) {
 		{ 
 			printf("No bytes are there to read");
 		}
-		string header = "HTTP/1.1 200 OK\nContent-Type: text/html\n";
-		string content = "<h1>Hello World!</h1>\n<script>window.alert('I can change content!')</script>";
+		string header = "HTTP/1.1 200 OK\nContent-Type: text/plain\n";
+		string content = "Hello!";
 		string payload = header + "\n\n" + content;
 		write(new_socket, payload.c_str() , strlen(payload.c_str()));
 		printf("Message sent: %s\n", payload.c_str());
