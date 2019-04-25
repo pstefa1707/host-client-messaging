@@ -14,12 +14,12 @@ int main(int argc, char *argv[]) {
 	int socket_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if (socket_fd < 0) {
 		printf("Socket creation failed!");
-	} else {
-		std::cout << socket_fd << std::endl;
-	}
-	
+	}	
 	memset((char *)&address, 0, sizeof(address));
-	in_addr_t server = inet_addr("192.168.0.15");
+	std::string serverTmp = {0};
+	std::cout << "Enter IP to connect to: ";
+	getline(std::cin, serverTmp);
+	in_addr_t server = inet_addr(serverTmp.c_str());
 	address.sin_port = htons(PORT);
 	address.sin_addr.s_addr = server;
 	address.sin_family = AF_INET;
@@ -27,19 +27,20 @@ int main(int argc, char *argv[]) {
 	if (connect(socket_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
 		printf("error occured when connecting!");
 	}
-	char buffer[1024];
-	std::cout << "Enter message to send >> ";
-	std::cin >> buffer;
-	int wrt = write(socket_fd, buffer, strlen(buffer));
-	if (wrt < 0) {
-		printf("Failed!");
+	while (1) {
+		std::string message = {0};
+		std::cout << "\nEnter message: ";
+		getline(std::cin, message);
+		int wrt = write(socket_fd, message.c_str(), sizeof(message));
+		if (wrt < 0) {
+			printf("Failed!");
+		}
+		printf("\nMessage sent: %s\n", message.c_str());
+		char recieved[1000024];
+		int reply = recv(socket_fd, recieved, sizeof(recieved), 0);
+		if (reply < 0) 
+			printf("ERROR reading from socket");
+		printf("\nMessage Recieved: %s\n", recieved);
 	}
-	int rd = read(socket_fd, buffer, sizeof(buffer));
-    if (rd < 0) 
-         printf("ERROR reading from socket");
-    printf("%s\n", buffer);
-    close(socket_fd);
-    return 0;
 
-	
 }

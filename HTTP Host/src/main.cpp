@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include <string.h>
 #include <iostream>
 
@@ -34,27 +35,30 @@ int main(int argc, char *argv[]) {
 		perror("In listen"); 
 		exit(EXIT_FAILURE); 
 	}
+	printf("+++++++ Waiting for new connection ++++++++\n\n");
+	int new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&addrlen);
+	if (new_socket<0)
+	{
+		perror("In accept");            
+		exit(EXIT_FAILURE);        
+	}
+	printf("Connection made to %s on port %d \n", inet_ntoa(address.sin_addr), ntohs(address.sin_port));
 	while(1) {
-		printf("\n+++++++ Waiting for new connection ++++++++\n\n");
-		int new_socket = accept(server_fd, (struct sockaddr*)&address, (socklen_t*)&addrlen);
-		if (new_socket<0)
-		{
-			perror("In accept");            
-			exit(EXIT_FAILURE);        
-		}
-		char buffer[1024] = {0};
-		int valread = read(new_socket , buffer, 1024); 
-		printf("%s\n", buffer);
+		char buffer[1000024];
+		int valread = read(new_socket , buffer, sizeof(buffer)); 
+		printf("\nMessage recieved: %s\n", buffer);
 		if(valread < 0)
 		{ 
 			printf("No bytes are there to read");
 		}
-		string header = "HTTP/1.1 200 OK\nContent-Type: text/plain\n";
-		string content = "Hello!";
-		string payload = header + "\n\n" + content;
-		write(new_socket, payload.c_str() , strlen(payload.c_str()));
-		printf("Message sent: %s\n", payload.c_str());
-		close(new_socket);
+		string payload = {0};
+		cout << "\nEnter message: ";
+		getline(cin, payload);
+		int wrt = write(new_socket, payload.c_str(), sizeof(payload));
+		if (wrt < 0) {
+			printf("Failed!");
+		}
+		printf("\nMessage sent: %s\n", payload.c_str());
 	}
 }
 
