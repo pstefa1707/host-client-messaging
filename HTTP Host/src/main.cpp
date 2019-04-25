@@ -3,8 +3,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <netinet/in.h>
-#include <string>
 #include <string.h>
+#include <iostream>
 
 using namespace std; 
 
@@ -43,13 +43,15 @@ int main(int argc, char *argv[]) {
 			exit(EXIT_FAILURE);        
 		}
 		char buffer[1024] = {0};
-		int valread = read( new_socket , buffer, 1024); 
-		printf("%s\n",buffer );
+		int valread = read(new_socket , buffer, 1024); 
+		printf("%s\n", buffer);
 		if(valread < 0)
 		{ 
 			printf("No bytes are there to read");
 		}
-		string payload = "HTTP/1.1 200 OK\nContent-Type: text/plain\nContent-Length: 8 \n\n Alo-ha!";
+		string header = "HTTP/1.1 200 OK\nContent-Type: text/html\n";
+		string content = "<h1>Hello World!</h1>\n<script>window.alert('I can change content!')</script>";
+		string payload = header + "\n\n" + content;
 		write(new_socket, payload.c_str() , strlen(payload.c_str()));
 		printf("Message sent: %s\n", payload.c_str());
 		close(new_socket);
