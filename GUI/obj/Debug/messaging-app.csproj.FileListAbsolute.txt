@@ -1,0 +1,14 @@
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\bin\Debug\messaging-app.exe.config
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\bin\Debug\messaging-app.exe
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\bin\Debug\messaging-app.pdb
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging-app.csprojAssemblyReference.cache
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging_app.Properties.Resources.resources
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging-app.csproj.GenerateResource.cache
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging-app.csproj.CoreCompileInputs.cache
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging-app.exe
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging-app.pdb
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging_app.Main.resources
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging_app.cServerSettings.resources
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging_app.jServerSettings.resources
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging_app.server.resources
+E:\One Drive\OneDrive - St Michael's College\Programming\messaging-app\obj\Debug\messaging_app.client.resources
