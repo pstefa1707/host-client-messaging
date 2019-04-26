@@ -1,2 +1,5 @@
 # host-client-messaging
-2 way messaging between a host and client, written in C++
+
+A host server can be created and users can join.
+
+Clients are able to communicate through the server to eachother.
