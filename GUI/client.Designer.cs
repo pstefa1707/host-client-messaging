@@ -33,7 +33,7 @@
             this.sendBtn = new System.Windows.Forms.Button();
             this.sendText = new System.Windows.Forms.TextBox();
             this.updated = new System.Windows.Forms.Label();
-            this.Updater = new System.ComponentModel.BackgroundWorker();
+            this.updater = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // textChat
@@ -41,6 +41,7 @@
             this.textChat.Location = new System.Drawing.Point(12, 30);
             this.textChat.Multiline = true;
             this.textChat.Name = "textChat";
+            this.textChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textChat.Size = new System.Drawing.Size(776, 354);
             this.textChat.TabIndex = 0;
             // 
@@ -81,9 +82,9 @@
             this.updated.TabIndex = 4;
             this.updated.Text = "Last Updated:";
             // 
-            // Updater
+            // updater
             // 
-            this.Updater.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Updater_DoWork);
+            this.updater.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Updater_DoWork);
             // 
             // client
             // 
@@ -110,6 +111,6 @@
         private System.Windows.Forms.Button sendBtn;
         private System.Windows.Forms.TextBox sendText;
         private System.Windows.Forms.Label updated;
-        private System.ComponentModel.BackgroundWorker Updater;
+        private System.ComponentModel.BackgroundWorker updater;
     }
 }

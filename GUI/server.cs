@@ -21,8 +21,11 @@ namespace messaging_app
         private int port;
         Boolean run = true;
         public string mostRecentMsg;
+        public List<string> connectedUsers;
         public server(string ip, int port)
         {
+            connectedUsers = new List<string>();
+            mostRecentMsg = "Server Created!";
             this.ip = ip;
             this.port = port;
             InitializeComponent();
@@ -57,7 +60,10 @@ namespace messaging_app
                 while (run)
                 {
                     Socket newSocket = myListener.AcceptSocket();
-                    log("Request recieved from " + newSocket.RemoteEndPoint);
+                    if (!connectedUsers.Contains(newSocket.RemoteEndPoint.ToString()))
+                    {
+                        log("New user connected: " + newSocket.RemoteEndPoint);
+                    }
                     int k = newSocket.Receive(buffer);
                     recievedData = Encoding.ASCII.GetString(buffer, 0, k);
                     if (recievedData.ToLower() == "get messages")
@@ -68,6 +74,7 @@ namespace messaging_app
                     }
                     else {
                         mostRecentMsg = recievedData;
+                        log(mostRecentMsg);
                     }
 
                 }

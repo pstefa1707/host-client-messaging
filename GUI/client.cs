@@ -31,7 +31,7 @@ namespace messaging_app
 
         private void Client_Load(object sender, EventArgs e)
         {
-            Updater.RunWorkerAsync();
+            updater.RunWorkerAsync();
         }
         void updateLabel(string output)
         {
@@ -53,52 +53,6 @@ namespace messaging_app
 
             this.textChat.Text += "\n" + output + "\n";
         }
-        private void Updater_DoWork(object sender, DoWorkEventArgs e)
-        {
-            int nextSecond = DateTime.Now.Second;
-            log("made it 1: " + nextSecond);
-            while (true)
-            {
-                if (DateTime.Now.Second == nextSecond)
-                {
-                    log("made it 2: " + nextSecond);
-                    try
-                    {
-                        TcpClient tcpClient = new TcpClient(this.ip, this.port);
-                        String payload = "GET messeges";
-                        Byte[] buffer = System.Text.Encoding.ASCII.GetBytes(payload);
-                        NetworkStream stream = tcpClient.GetStream();
-
-                        stream.Write(buffer, 0, buffer.Length);
-                        Byte[] rBuffer = new Byte[10024];
-                        String responseData = String.Empty;
-                        Int32 bytes = stream.Read(rBuffer, 0, rBuffer.Length);
-                        responseData = Encoding.ASCII.GetString(rBuffer, 0, bytes);
-                        updated.ForeColor = Color.Green;
-                        updateLabel("Updated: " + DateTime.Now.TimeOfDay);
-                        if (responseData != mostRecentMsg)
-                        {
-                            log(responseData);
-                            mostRecentMsg = responseData;
-                        }
-                        
-                        
-
-                    }
-                    catch (ArgumentNullException except)
-                    {
-                        updated.ForeColor = Color.Red;
-                        updateLabel("Null!");
-                    }
-                    catch (SocketException except)
-                    {
-                        updated.ForeColor = Color.Red;
-                        updateLabel("Error connecting to server!");
-                    }
-                    nextSecond = DateTime.Now.Second + 1;
-                }
-            }
-        }
 
         private void SendBtn_Click(object sender, EventArgs e)
         {
@@ -118,10 +72,55 @@ namespace messaging_app
             {
                 Console.WriteLine("ArgumentNullException: {0}", except);
             }
-            catch (SocketException except)
+            catch (SocketException)
             {
                 updated.ForeColor = Color.Red;
                 updateLabel("Error connecting to server!");
+            }
+        }
+
+        private void Updater_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int nextSecond = DateTime.Now.Second;
+            while (true)
+            {
+                if (DateTime.Now.Second == nextSecond)
+                {
+                    DateTime time = new DateTime();
+                    time = DateTime.Now.AddSeconds(1);
+                    nextSecond = time.Second;
+                    try
+                    {
+                        TcpClient tcpClient = new TcpClient(this.ip, this.port);
+                        String payload = "GET messages";
+                        Byte[] buffer = System.Text.Encoding.ASCII.GetBytes(payload);
+                        NetworkStream stream = tcpClient.GetStream();
+
+                        stream.Write(buffer, 0, buffer.Length);
+                        Byte[] rBuffer = new Byte[10024];
+                        String responseData = String.Empty;
+                        Int32 bytes = stream.Read(rBuffer, 0, rBuffer.Length);
+                        responseData = Encoding.ASCII.GetString(rBuffer, 0, bytes);
+                        updated.ForeColor = Color.Green;
+                        updateLabel("Updated: " + DateTime.Now.Hour + ":" + DateTime.Now.Second);
+                        if (responseData != mostRecentMsg)
+                        {
+                            log(responseData);
+                            mostRecentMsg = responseData;
+                        }
+
+                    }
+                    catch (ArgumentNullException except)
+                    {
+                        updated.ForeColor = Color.Red;
+                        updateLabel("Null!");
+                    }
+                    catch (SocketException except)
+                    {
+                        updated.ForeColor = Color.Red;
+                        updateLabel("Error connecting to server!");
+                    }
+                }
             }
         }
     }
