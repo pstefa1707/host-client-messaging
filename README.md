@@ -14,4 +14,3 @@ Clients are able to communicate through the server to eachother.
   <br>-Enter server's public ip in "IP" box
   <br>-Enter server's port number
   <br>-Enter desired username
-  
