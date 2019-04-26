@@ -1,0 +1,11 @@
+/home/pstefa1707/Documents/Programming/csharp-webserver/bin/Debug/netcoreapp2.2/csharp-webserver.deps.json
+/home/pstefa1707/Documents/Programming/csharp-webserver/bin/Debug/netcoreapp2.2/csharp-webserver.runtimeconfig.json
+/home/pstefa1707/Documents/Programming/csharp-webserver/bin/Debug/netcoreapp2.2/csharp-webserver.runtimeconfig.dev.json
+/home/pstefa1707/Documents/Programming/csharp-webserver/bin/Debug/netcoreapp2.2/csharp-webserver.dll
+/home/pstefa1707/Documents/Programming/csharp-webserver/bin/Debug/netcoreapp2.2/csharp-webserver.pdb
+/home/pstefa1707/Documents/Programming/csharp-webserver/obj/Debug/netcoreapp2.2/csharp-webserver.csprojAssemblyReference.cache
+/home/pstefa1707/Documents/Programming/csharp-webserver/obj/Debug/netcoreapp2.2/csharp-webserver.csproj.CoreCompileInputs.cache
+/home/pstefa1707/Documents/Programming/csharp-webserver/obj/Debug/netcoreapp2.2/csharp-webserver.AssemblyInfoInputs.cache
+/home/pstefa1707/Documents/Programming/csharp-webserver/obj/Debug/netcoreapp2.2/csharp-webserver.AssemblyInfo.cs
+/home/pstefa1707/Documents/Programming/csharp-webserver/obj/Debug/netcoreapp2.2/csharp-webserver.dll
+/home/pstefa1707/Documents/Programming/csharp-webserver/obj/Debug/netcoreapp2.2/csharp-webserver.pdb

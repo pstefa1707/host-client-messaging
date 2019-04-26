@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/pstefa1707/Documents/Programming/csharp-webserver/csharp-webserver.csproj": {}
+  },
+  "projects": {
+    "/home/pstefa1707/Documents/Programming/csharp-webserver/csharp-webserver.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/pstefa1707/Documents/Programming/csharp-webserver/csharp-webserver.csproj",
+        "projectName": "csharp-webserver",
+        "projectPath": "/home/pstefa1707/Documents/Programming/csharp-webserver/csharp-webserver.csproj",
+        "packagesPath": "/home/pstefa1707/.nuget/packages/",
+        "outputPath": "/home/pstefa1707/Documents/Programming/csharp-webserver/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/pstefa1707/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
